@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="array_list_item">
+        <item>HOME</item>
+        <item>ITINERARY</item>
+        <item>SPEAKERS</item>
+        <item>OVERVIEW OF THE DAY</item>
+        <item>QUIZ</item>
+        <item>PICTURE GALLERY</item>
+        <item>SPONSORS</item>
+        <item>LOGOUT</item>
+    </string-array>
+</resources>

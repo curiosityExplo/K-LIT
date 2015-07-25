@@ -1,0 +1,54 @@
+<resources>
+         <string name="app_name">K-LIT</string>
+         <string name="action_settings">Settings</string>
+
+
+        <string name="navigation_drawer_open">Open navigation drawer</string>
+        <string name="navigation_drawer_close">Close navigation drawer</string>
+        <string name="desc_mini">KLF will be a literary festival unlike any other; one that will raise the bar and set high standards for the long-term benefit of the literary field; one that will be looked upon as an institution in itself.
+                            Set out in the following paragraphs is its key aims and aspirations.</string>
+        <string name="home">Home</string>
+        <string name="itinerary">Itinerary</string>
+        <string name="speakers">Speakers</string>
+        <string name="overview">Overview Of The Day</string>
+        <string name="quiz">Quiz</string>
+        <string name="picture">Picture Gallery</string>
+        <string name="sponsors">Sponsors</string>
+
+        <string name="home_vision">KLF will be a literary festival unlike any other; one that will raise the bar and set high standards for the long-term benefit of the literary field; one that will be looked upon as an institution in itself.
+
+Set out in the following paragraphs is its key aims and aspirations. With its goals and roadmap for implementation clearly outlined,the festival will be gradually institutionalised so that it is not just a one-off event in a year.
+
+A thought leader
+Thought leaders lead their industry as specialists and subject-matter experts. They possess a distinctively original idea, a unique point of view or an unprecedented insight into their industry. While offering an inclusive platform for all stakeholders to facilitate a profound, in-depth, free, and frank dialogue and debate on issues that confront the world of Indian literature, KLF will serve as an independent and credible thought-leader that earns the respect of the literary community and to which the literary community defers to for guidance.
+
+Celebrate Literature
+KLF will celebrate literature by bringing together creative minds from around the country to offer insights on matters relevant to the world of Indian literature and our cultural life as a nation.
+
+Caged birds must be set free. Untold stories must KLF will be a literary festival unlike any other; one that will raise the bar and set high standards for the long-term benefit of the literary field; one that will be looked upon as an institution in itself.
+
+Set out in the following paragraphs is its key aims and aspirations. With its goals and roadmap for implementation clearly outlined,the festival will be gradually institutionalised so that it is not just a one-off event in a year.
+
+A thought leader
+Thought leaders lead their industry as specialists and subject-matter experts. They possess a distinctively original idea, a unique point of view or an unprecedented insight into their industry. While offering an inclusive platform for all stakeholders to facilitate a profound, in-depth, free, and frank dialogue and debate on issues that confront the world of Indian literature, KLF will serve as an independent and credible thought-leader that earns the respect of the literary community and to which the literary community defers to for guidance.
+
+Celebrate Literature
+KLF will celebrate literature by bringing together creative minds from around the country to offer insights on matters relevant to the world of Indian literature and our cultural life as a nation.
+
+Caged birds must be set free. Untold stories must right foundation, we are contributing towardsdeveloping a bright and stable mind.
+
+KLF will highlight this genre, the gaps therein, as well as the immense potential of this genre and bring in people who are passionate about presenting quality literature and fiction to children and young adults.
+
+A capable stage for aspiring writers
+India is a young nation with an even younger population, which means more innovative minds, more aspiring writers with untold stories, fresh views to old and new problems, an energetic aura, and more individuals with fire in their belliesto voice their opinion.
+
+KLF will provide a platform to the young and aspiring writers tobe among the individualsthey admire, to raise questions, express opinions, share insights, and gain a deeper understanding of what is involved in being a successful writer.
+
+KLF aspires to become a significant and crucial platform where aspiring writers can interact meaningfully with established and experienced writers.</string>
+
+<!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+
+</resources>

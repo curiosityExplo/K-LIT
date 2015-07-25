@@ -1,0 +1,145 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.iidea8.k_lit.OverviewActivity"
+    android:background="#fff">
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:text="DATE:"
+            android:textSize="30sp" />
+
+        <TextView
+            android:id="@+id/tvEvent1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/tvDate"
+            android:layout_marginTop="30dp"
+            android:text="EVENT1"
+            android:textSize="20sp"/>
+
+        <TextView
+            android:id="@+id/tvTime1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/tvDate"
+            android:layout_marginTop="30dp"
+            android:textSize="20sp"
+            android:text="TIME:" />
+
+        <TextView
+            android:id="@+id/tvDesc1"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_below="@+id/tvEvent1"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:text="@string/desc_mini" />
+
+        <TextView
+            android:id="@+id/tvEvent2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/tvDesc1"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:text="EVENT2" />
+
+        <TextView
+            android:id="@+id/tvTime2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/tvDesc1"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:text="TIME:" />
+
+        <TextView
+            android:id="@+id/tvDesc2"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_below="@+id/tvEvent2"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:text="@string/desc_mini" />
+
+        <TextView
+            android:id="@+id/tvEvent3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/tvDesc2"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:text="EVENT3" />
+
+        <TextView
+            android:id="@+id/tvTime3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/tvDesc2"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:text="TIME:" />
+
+        <TextView
+            android:id="@+id/tvDesc3"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_below="@+id/tvEvent3"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:text="@string/desc_mini" />
+
+        <TextView
+            android:id="@+id/tvEvent4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/tvDesc3"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:text="EVENT4" />
+
+        <TextView
+            android:id="@+id/tvTime4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/tvDesc3"
+            android:layout_marginTop="20dp"
+            android:textSize="20sp"
+            android:text="TIME:" />
+
+        <TextView
+            android:id="@+id/tvDesc4"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_below="@+id/tvEvent4"
+            android:layout_marginTop="10dp"
+            android:textSize="15sp"
+            android:text="@string/desc_mini" />
+    </RelativeLayout>
+
+</ScrollView>
+
