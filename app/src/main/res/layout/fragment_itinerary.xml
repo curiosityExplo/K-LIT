@@ -20,9 +20,9 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:text="DATE:"
+            android:text="D"
             android:textStyle="bold"
-            android:textSize="30sp" />
+            android:textSize="10sp" />
 
         <TextView
             android:id="@+id/tvEvent1"
@@ -224,6 +224,13 @@
             android:textSize="15sp"
             android:text="Sponsors -" />
 
+        <ProgressBar
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="200dp" />
 
 
     </RelativeLayout>
