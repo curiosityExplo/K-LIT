@@ -14,7 +14,7 @@
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="250dp"
-        android:layout_height="150dp"
+        android:layout_height="170dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:background="@color/white"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="135dp"
         android:text="Sponsored By:"
         android:textSize="20sp" />
 
@@ -38,24 +38,6 @@
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true">
 
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="100dp"
-            android:id="@+id/ivSponsorKLF1"
-            android:layout_marginRight="15dp"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/your_sponsors_here" />
-
-        <ImageView
-            android:layout_width="120dp"
-            android:layout_height="100dp"
-            android:id="@+id/ivSponsorKLF2"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="20dp"
-            android:src="@drawable/your_sponsors_here"/>
-
 
         <ImageView
             android:id="@+id/tvSponsors1"
@@ -63,16 +45,14 @@
             android:layout_height="50dp"
             android:layout_marginLeft="7dp"
             android:layout_marginStart="7dp"
-            android:src="@drawable/sponsor_uttarakhand"
-            android:layout_below="@id/ivSponsorKLF1"/>
+            android:src="@drawable/sponsor_uttarakhand" />
 
         <ImageView
             android:id="@+id/tvSponsors2"
             android:layout_width="100dp"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/sponsors_go_himalayas"
-            android:layout_below="@id/ivSponsorKLF1"/>
+            android:src="@drawable/sponsors_go_himalayas" />
 
         <ImageView
             android:id="@+id/tvSponsors3"
@@ -82,8 +62,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginEnd="5dp"
             android:layout_marginRight="5dp"
-            android:src="@drawable/sponsor_knowledgepartner"
-            android:layout_below="@id/ivSponsorKLF1"/>
+            android:src="@drawable/sponsor_knowledgepartner" />
 
         <ImageView
             android:id="@+id/tvSponsors4"

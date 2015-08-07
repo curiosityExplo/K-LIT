@@ -12,7 +12,7 @@
 
     <ImageView
         android:id="@+id/imageView2"
-        android:layout_width="150sp"
+        android:layout_width="200sp"
         android:layout_height="150sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="35dp"
         android:text="Login ID" />
 
     <EditText
@@ -52,7 +52,7 @@
         android:layout_below="@+id/textView2"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="1dp"
-        android:inputType="textPassword"/>
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/button1"
@@ -62,13 +62,25 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:background="@color/green"
-        android:text="Sign In"
-        android:onClick="SignningIn"/>
+        android:onClick="SignningIn"
+        android:text="Sign In" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@+id/button1"
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true"
+        android:textAllCaps="false"
+        android:background="@color/dark_green_transparent"
+        android:text="Register"
+        android:textColor="@color/dark_grey_transparent"
+        android:onClick="registerClick"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true">
+        android:layout_marginLeft="77dp">
 
         <TextView
             android:id="@+id/textView3"
@@ -83,10 +95,10 @@
             android:layout_width="80dp"
             android:layout_height="30dp"
             android:layout_alignParentBottom="true"
-            android:layout_toRightOf="@+id/textView3"
-            android:layout_toEndOf="@+id/textView3"
             android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
+            android:layout_toEndOf="@+id/textView3"
+            android:layout_toRightOf="@+id/textView3"
             android:background="@drawable/iidea_logo"
             android:onClick="webClick" />
 
@@ -98,17 +110,18 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/button1"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="75dp"
         android:text="OR"
-        android:textSize="20sp" />
+        android:textSize="17sp"
+        android:textStyle="bold"/>
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="240dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/textView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="1dp"
         android:background="@color/facebook_blue"
         android:text="Facebook Login"
         android:textAllCaps="false"

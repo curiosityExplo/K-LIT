@@ -6,4 +6,8 @@
     <color name="black">#000</color>
     <color name="grey">#2f4f4f</color>
     <color name="dark_green">#006400</color>
+    <color name="dark_green_transparent">#80006400</color>
+    <color name="dark_grey">#191a1c</color>
+    <color name="dark_grey_transparent">#cc191a1c</color>
+    <color name="black_transparent">#000</color>
 </resources>

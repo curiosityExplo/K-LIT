@@ -30,4 +30,10 @@ public class LoginActivity extends Activity {
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
+
+    public void registerClick(View view) {
+        Intent intent = new Intent(LoginActivity.this, Register.class);
+        startActivity(intent);
+        finish();
+    }
 }

@@ -14,98 +14,98 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:id="@+id/imageView1"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
-            android:src="@drawable/iidea_logo" />
+            android:id="@+id/iv_speaker_aanchal"
+            android:layout_width="110sp"
+            android:layout_height="150sp"
+            android:src="@drawable/speaker_aanchal_malhotra" />
 
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/tv_speaker_aanchal"
             android:layout_width="fill_parent"
             android:layout_height="150dp"
             android:layout_marginLeft="10dp"
-            android:layout_toEndOf="@+id/imageView1"
-            android:layout_toRightOf="@+id/imageView1"
-            android:text="@string/desc_mini" />
-
+            android:layout_toEndOf="@+id/iv_speaker_aanchal"
+            android:layout_toRightOf="@+id/iv_speaker_aanchal"
+            android:text="@string/anchal_bio" />
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
-            android:src="@drawable/iidea_logo"
-            android:layout_below="@+id/textView1"
+            android:id="@+id/iv_speaker_abha"
+            android:layout_width="110sp"
+            android:layout_height="150sp"
+            android:src="@drawable/speaker_abha_iyengar"
+            android:layout_below="@+id/tv_speaker_aanchal"
             android:layout_marginTop="30dp" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/tv_speaker_abha"
             android:layout_width="fill_parent"
             android:layout_height="150dp"
             android:layout_marginLeft="10dp"
-            android:layout_toEndOf="@+id/imageView2"
-            android:layout_toRightOf="@+id/imageView2"
-            android:text="@string/desc_mini"
-            android:layout_below="@+id/textView1"
+            android:layout_toEndOf="@+id/iv_speaker_abha"
+            android:layout_toRightOf="@+id/iv_speaker_abha"
+            android:text="@string/abha_bio"
+            android:layout_below="@+id/tv_speaker_aanchal"
             android:layout_marginTop="30dp" />
 
         <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
-            android:src="@drawable/iidea_logo"
-            android:layout_below="@+id/textView2"
+            android:id="@+id/iv_speaker_aditya"
+            android:layout_width="110sp"
+            android:layout_height="150sp"
+            android:src="@drawable/speaker_aditya_bal"
+            android:layout_below="@+id/tv_speaker_abha"
             android:layout_marginTop="30dp" />
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tv_speaker_aditya"
             android:layout_width="fill_parent"
             android:layout_height="150dp"
             android:layout_marginLeft="10dp"
-            android:layout_toEndOf="@+id/imageView3"
-            android:layout_toRightOf="@+id/imageView3"
-            android:text="@string/desc_mini"
-            android:layout_below="@+id/textView2"
+            android:layout_toEndOf="@+id/iv_speaker_aditya"
+            android:layout_toRightOf="@+id/iv_speaker_aditya"
+            android:text="@string/aditya_bio"
+            android:layout_below="@+id/tv_speaker_abha"
             android:layout_marginTop="30dp" />
 
         <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
-            android:src="@drawable/iidea_logo"
-            android:layout_below="@+id/textView3"
+            android:id="@+id/iv_speaker_advaita"
+            android:layout_width="110sp"
+            android:layout_height="150sp"
+            android:src="@drawable/speaker_advaita_kala"
+            android:layout_below="@+id/tv_speaker_aditya"
             android:layout_marginTop="30dp" />
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tv_speaker_advaita"
             android:layout_width="fill_parent"
             android:layout_height="150dp"
             android:layout_marginLeft="10dp"
-            android:layout_toEndOf="@+id/imageView4"
-            android:layout_toRightOf="@+id/imageView4"
-            android:text="@string/desc_mini"
-            android:layout_below="@+id/textView3"
+            android:layout_toEndOf="@+id/iv_speaker_advaita"
+            android:layout_toRightOf="@+id/iv_speaker_advaita"
+            android:text="@string/advaita_bio"
+            android:layout_below="@+id/tv_speaker_aditya"
             android:layout_marginTop="30dp" />
 
 
         <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
-            android:layout_below="@+id/textView4"
+            android:id="@+id/iv_speaker_alka"
+            android:layout_width="110sp"
+            android:layout_height="150sp"
+            android:layout_below="@+id/tv_speaker_advaita"
             android:layout_marginTop="30dp"
-            android:src="@drawable/iidea_logo"
-            android:text="@string/desc_mini" />
+            android:src="@drawable/speaker_alka_pande" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/tv_speaker_alka"
             android:layout_width="fill_parent"
             android:layout_height="150dp"
-            android:layout_below="@+id/textView4"
+            android:layout_below="@+id/tv_speaker_advaita"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="30dp"
-            android:layout_toEndOf="@+id/imageView5"
-            android:layout_toRightOf="@+id/imageView5"
-            android:text="@string/desc_mini" />
+            android:layout_toEndOf="@+id/iv_speaker_alka"
+            android:layout_toRightOf="@+id/iv_speaker_alka"
+            android:text="@string/alka_bio" />
+
 
     </RelativeLayout>
+
 
 </ScrollView>

@@ -3,20 +3,10 @@
     android:layout_height="wrap_content"
     android:layout_width="wrap_content"
     android:id="@+id/rlGridView"
-    android:background="#2f4f4f">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Picture Gallery"
-        android:id="@+id/tvPG"
-        android:layout_centerHorizontal="true"
-        android:textSize="30sp"
-        android:textStyle="bold|italic"/>
+    android:background="@color/white">
 
 
     <GridView
-        android:layout_below="@id/tvPG"
         android:layout_marginTop="40dp"
         android:id="@+id/gridview"
         android:layout_width="match_parent"

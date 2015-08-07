@@ -15,9 +15,9 @@
 
         <ImageView
             android:id="@+id/imageView1"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
-            android:src="@drawable/iidea_logo" />
+            android:layout_width="110sp"
+            android:layout_height="150sp"
+            android:src="@drawable/sponsor_aao_jee_le_zindagi" />
 
         <TextView
             android:id="@+id/textView1"
@@ -30,9 +30,9 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
-            android:src="@drawable/iidea_logo"
+            android:layout_width="110sp"
+            android:layout_height="150sp"
+            android:src="@drawable/sponsor_knowledgepartner"
             android:layout_below="@+id/textView1"
             android:layout_marginTop="30dp" />
 
@@ -49,9 +49,9 @@
 
         <ImageView
             android:id="@+id/imageView3"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
-            android:src="@drawable/iidea_logo"
+            android:layout_width="110sp"
+            android:layout_height="150sp"
+            android:src="@drawable/sponsor_nhp"
             android:layout_below="@+id/textView2"
             android:layout_marginTop="30dp" />
 
@@ -68,9 +68,9 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
-            android:src="@drawable/iidea_logo"
+            android:layout_width="110sp"
+            android:layout_height="150sp"
+            android:src="@drawable/sponsor_uttarakhand"
             android:layout_below="@+id/textView3"
             android:layout_marginTop="30dp" />
 
@@ -88,11 +88,11 @@
 
         <ImageView
             android:id="@+id/imageView5"
-            android:layout_width="100sp"
-            android:layout_height="100sp"
+            android:layout_width="110sp"
+            android:layout_height="150sp"
             android:layout_below="@+id/textView4"
             android:layout_marginTop="30dp"
-            android:src="@drawable/iidea_logo"
+            android:src="@drawable/sponsors_go_himalayas"
             android:text="@string/desc_mini" />
 
         <TextView

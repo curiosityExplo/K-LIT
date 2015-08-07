@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -57,8 +58,11 @@ public class DrawerActivity extends ActionBarActivity {
         setTitle(null);
 
         getActivity = getTitle();
+    }
+    public void onClick_day1(View view) {
 
-
+        getFragmentManager().beginTransaction()
+                .replace(R.id.frame_layout, new ItineraryDay1()).commit();
     }
 
 
@@ -98,9 +102,33 @@ public class DrawerActivity extends ActionBarActivity {
                 mdrawerLayout.openDrawer(mListView);
                 setTitle("BROWSE");
             }
+            if (id == R.id.action_settings){
+                Toast.makeText(DrawerActivity.this, "Settings Selected", Toast.LENGTH_SHORT)
+                        .show();
+            }
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClick_day2(View view) {
+        getFragmentManager().beginTransaction()
+                .replace(R.id.frame_layout, new ItineraryDay2()).commit();
+    }
+
+    public void onClick_day3(View view) {
+        getFragmentManager().beginTransaction()
+                .replace(R.id.frame_layout, new ItineraryDay3()).commit();
+    }
+
+    public void onClick_day4(View view) {
+        getFragmentManager().beginTransaction()
+                .replace(R.id.frame_layout, new ItineraryDay4()).commit();
+    }
+
+    public void onClick_day5(View view) {
+        getFragmentManager().beginTransaction()
+                .replace(R.id.frame_layout, new ItineraryDay5()).commit();
     }
 
     private class drawerItemClickListner implements ListView.OnItemClickListener {
