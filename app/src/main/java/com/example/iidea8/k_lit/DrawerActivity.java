@@ -37,9 +37,9 @@ public class DrawerActivity extends ActionBarActivity {
         mListItems = getResources().getStringArray(R.array.array_list_item);
         mListView = (ListView) findViewById(R.id.list_view);
         String[] mArrayList = getResources().getStringArray(R.array.array_list_item);
-        mListView.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_items, mArrayList ));
+        mListView.setAdapter(new ArrayAdapter<>(this, R.layout.drawer_list_items, mArrayList));
 
-        mListView.setOnItemClickListener(new drawerItemClickListner());
+        mListView.setOnItemClickListener(new drawerItemClickListener());
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
@@ -58,11 +58,6 @@ public class DrawerActivity extends ActionBarActivity {
         setTitle(null);
 
         getActivity = getTitle();
-    }
-    public void onClick_day1(View view) {
-
-        getFragmentManager().beginTransaction()
-                .replace(R.id.frame_layout, new ItineraryDay1()).commit();
     }
 
 
@@ -102,13 +97,19 @@ public class DrawerActivity extends ActionBarActivity {
                 mdrawerLayout.openDrawer(mListView);
                 setTitle("BROWSE");
             }
-            if (id == R.id.action_settings){
-                Toast.makeText(DrawerActivity.this, "Settings Selected", Toast.LENGTH_SHORT)
-                        .show();
-            }
+            return false;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+
+    public void onClick_day1(View view) {
+
+        getFragmentManager().beginTransaction()
+                .replace(R.id.frame_layout, new ItineraryDay1()).commit();
+
     }
 
     public void onClick_day2(View view) {
@@ -131,7 +132,7 @@ public class DrawerActivity extends ActionBarActivity {
                 .replace(R.id.frame_layout, new ItineraryDay5()).commit();
     }
 
-    private class drawerItemClickListner implements ListView.OnItemClickListener {
+    private class drawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             selectItem(position);
