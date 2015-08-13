@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-    android:id="@+id/rlGridView"
-    android:background="@color/white">
+<GridView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gallery_gridView"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/background_material_dark"
+    android:choiceMode="multipleChoice"
+    android:columnWidth="3dp"
+    android:fastScrollEnabled="true"
+    android:gravity="center"
+    android:horizontalSpacing="30dp"
+    android:listSelector="@drawable/grid_view_selector"
+    android:numColumns="3"
+    android:overScrollMode="always"
+    android:paddingLeft="3dp"
+    android:paddingRight="3dp"
+    android:scrollbarStyle="insideInset"
+    android:smoothScrollbar="true"
+    android:stretchMode="columnWidth"
+    android:verticalScrollbarPosition="defaultPosition"
+    android:verticalSpacing="30dp" />
 
-
-    <GridView
-        android:layout_marginTop="40dp"
-        android:id="@+id/gridview"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:columnWidth="100dp"
-        android:gravity="center"
-        android:horizontalSpacing="7dp"
-        android:numColumns="4"
-        android:stretchMode="none"
-        android:verticalSpacing="7dp" />
-
-</RelativeLayout>
