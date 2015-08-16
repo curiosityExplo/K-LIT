@@ -2,11 +2,11 @@ package com.example.iidea8.k_lit;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.support.v4.app.Fragment;
+import android.net.Uri;
+import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -14,9 +14,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 
 public class DrawerActivity extends ActionBarActivity {
@@ -130,6 +127,12 @@ public class DrawerActivity extends ActionBarActivity {
     public void onClick_day5(View view) {
         getFragmentManager().beginTransaction()
                 .replace(R.id.frame_layout, new ItineraryDay5()).commit();
+    }
+
+    public void webClick(View view) {
+        Uri uri = Uri.parse("http://www.iidea8.com/");
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
     }
 
     private class drawerItemClickListener implements ListView.OnItemClickListener {

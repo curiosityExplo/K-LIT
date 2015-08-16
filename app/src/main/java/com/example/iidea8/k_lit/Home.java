@@ -1,8 +1,8 @@
 package com.example.iidea8.k_lit;
 
 
-import android.os.Bundle;
 import android.app.Fragment;
+import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,4 +19,5 @@ public class Home extends Fragment {
         view = inflater.inflate(R.layout.fragment_home, container, false);
         return view;
     }
+
 }
