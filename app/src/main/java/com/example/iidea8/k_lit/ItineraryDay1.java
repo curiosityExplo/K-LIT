@@ -115,7 +115,7 @@ public class ItineraryDay1 extends Fragment  {
         @Override
         protected void onPostExecute(ArrayList<Day1GnS> result) {
             ListView listViewDay1 = (ListView) view.findViewById(R.id.list_view_day1);
-            Day1Adapter day1Adapter = new Day1Adapter(getActivity().getBaseContext(),day1GnSArray);
+            Day1Adapter day1Adapter = new Day1Adapter(getActivity().getBaseContext(),result);
             listViewDay1.setAdapter(day1Adapter);
             pb.setVisibility(View.INVISIBLE);
             super.onPostExecute(result);
