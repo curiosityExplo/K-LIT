@@ -26,7 +26,7 @@ public class ItineraryDay1 extends Fragment  {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_itinerary_day1, container, false);
-        new Day1Async().execute("http://iidea8.webuda.com/services/webservice_itenary.php");
+        new Day1Async().execute("http://iidea8.webuda.com/services/itenary_service.php?date=2015-10-23");
         setRetainInstance(true);
         return view;
     }
@@ -52,9 +52,34 @@ public class ItineraryDay1 extends Fragment  {
             String start_time = rootObject1.getString("EVENT_START_TIME");
             String end_time = rootObject1.getString("EVENT_END_TIME");
             JSONArray subEventArray = rootObject1.getJSONArray("sub_event_Children");
-                 StringBuilder subEventStringBuilder = new StringBuilder(subEventArray.length());
+                JSONArray moderaterArray = rootObject1.getJSONArray("moderator_Children");
+                JSONArray curaterArray = rootObject1.getJSONArray("curator_Children");
 
-                 for (int s=0; s<subEventArray.length(); s++){
+                StringBuilder subEventStringBuilder = new StringBuilder(subEventArray.length());
+                StringBuilder moderaterStringBuilder = new StringBuilder(moderaterArray.length());
+                StringBuilder curatorStringBuilder = new StringBuilder(curaterArray.length());
+                StringBuilder moderatedBy = new StringBuilder();
+                moderatedBy.append("Moderated By:  ");
+                StringBuilder curatedBy = new StringBuilder();
+                curatedBy.append("\n").append("Curated By:  ");
+
+                for (int m=0; m<moderaterArray.length();m++){
+                    JSONObject moderaterObjects = moderaterArray.getJSONObject(m);
+                    String moderaterFirstName = moderaterObjects.getString("Moderator_name");
+                    String moderaterLastName = moderaterObjects.getString("Moderator_last_name");
+                    moderaterStringBuilder.append(moderaterFirstName).append(" ")
+                            .append(moderaterLastName).append("  ");
+                }
+
+                for (int c=0; c<curaterArray.length();c++){
+                    JSONObject curaterObjects = curaterArray.getJSONObject(c);
+                    String curaterFirstName = curaterObjects.getString("curator_name");
+                    String curaterLastName = curaterObjects.getString("curator_last_name");
+                    curatorStringBuilder.append(curaterFirstName)
+                                          .append(" ").append(curaterLastName).append(" ");
+                }
+
+                for (int s=0; s<subEventArray.length(); s++){
                      JSONObject subEventObjects = subEventArray.getJSONObject(s);
                      JSONArray subChildrenArray = subEventObjects.getJSONArray("Children");
                      StringBuilder speaker = new StringBuilder(subChildrenArray.length());
@@ -71,12 +96,15 @@ public class ItineraryDay1 extends Fragment  {
                      String subName = subEventObjects.getString("sub_event_Name");
                      subEventStringBuilder.append(subName).append(speaker).append("\n \n");
                      subEventStringBuilder.toString();
-                 }
+                }
+
                  day1GnS = new Day1GnS();
                  day1GnS.setEventName(eventName);
                  day1GnS.setTime(start_time + "-" + end_time);
                  day1GnS.setSpeakers(subEventStringBuilder);
+                 day1GnS.setModerator(moderatedBy.append(moderaterStringBuilder).append(curatedBy).append(curatorStringBuilder));
                  day1GnSArray.add(day1GnS);
+
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -88,7 +116,33 @@ public class ItineraryDay1 extends Fragment  {
                     String start_time = rootObjects.getString("EVENT_START_TIME");
                     String end_time = rootObjects.getString("EVENT_END_TIME");
                     JSONArray speakerArray = rootObjects.getJSONArray("Speaker_Children");
+                    JSONArray moderaterArray = rootObjects.getJSONArray("moderator_Children");
+                    JSONArray curaterArray = rootObjects.getJSONArray("curator_Children");
+
                     StringBuilder speakerStringBuilder = new StringBuilder(speakerArray.length());
+                    StringBuilder moderaterStringBuilder = new StringBuilder(moderaterArray.length());
+                    StringBuilder curatorStringBuilder = new StringBuilder(curaterArray.length());
+                    StringBuilder moderatedBy = new StringBuilder();
+                    moderatedBy.append("Moderated By:  ");
+                    StringBuilder curatedBy = new StringBuilder();
+                    curatedBy.append("\n").append("Curated  By:  ");
+
+                    for (int m=0; m<moderaterArray.length();m++){
+                        JSONObject moderaterObjects = moderaterArray.getJSONObject(m);
+                        String moderaterFirstName = moderaterObjects.getString("Moderator_name");
+                        String moderaterLastName = moderaterObjects.getString("Moderator_last_name");
+                        moderaterStringBuilder.append(moderaterFirstName).append(" ")
+                                .append(moderaterLastName).append("  ");
+                    }
+
+                    for (int c=0; c<curaterArray.length();c++){
+                        JSONObject curaterObjects = curaterArray.getJSONObject(c);
+                        String curaterFirstName = curaterObjects.getString("curator_name");
+                        String curaterLastName = curaterObjects.getString("curator_last_name");
+                        curatorStringBuilder.append(curaterFirstName)
+                                .append(" ").append(curaterLastName).append("  ");
+                    }
+
                     for (int k=0;k<speakerArray.length();k++){
                         JSONObject speakerObjects = speakerArray.getJSONObject(k);
                         String speakerFirstName = speakerObjects.getString("SPEAKER_NAME");
@@ -103,6 +157,7 @@ public class ItineraryDay1 extends Fragment  {
                     day1GnS.setEventName(eventName);
                     day1GnS.setTime(start_time + "-" + end_time);
                     day1GnS.setSpeakers(speakerStringBuilder);
+                    day1GnS.setModerator(moderatedBy.append(moderaterStringBuilder).append(curatedBy).append(curatorStringBuilder));
                     day1GnSArray.add(day1GnS);
 
                 } catch (JSONException e) {
