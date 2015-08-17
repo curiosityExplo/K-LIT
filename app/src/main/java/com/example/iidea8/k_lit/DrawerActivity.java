@@ -2,7 +2,6 @@ package com.example.iidea8.k_lit;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -80,7 +79,7 @@ public class DrawerActivity extends ActionBarActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
+        // automatically handle clicks on the Home/Up bt_login_ideaWebClick, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
@@ -129,11 +128,7 @@ public class DrawerActivity extends ActionBarActivity {
                 .replace(R.id.frame_layout, new ItineraryDay5()).commit();
     }
 
-    public void webClick(View view) {
-        Uri uri = Uri.parse("http://www.iidea8.com/");
-        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
-        startActivity(intent);
-    }
+
 
     private class drawerItemClickListener implements ListView.OnItemClickListener {
         @Override

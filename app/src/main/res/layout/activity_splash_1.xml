@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:theme="@style/AppTheme"
-    tools:context="com.example.iidea8.k_lit.SplashActivity">
+    tools:context="com.example.iidea8.k_lit.SplashActivity1">
 
 
     <ImageView
@@ -94,7 +94,7 @@
         android:layout_alignParentBottom="true">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tv_login_powered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -102,11 +102,11 @@
             android:layout_alignParentBottom="true" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/bt_login_ideaWebClick"
             android:layout_width="90sp"
             android:layout_height="30sp"
-            android:layout_toRightOf="@+id/textView3"
-            android:layout_toEndOf="@+id/textView3"
+            android:layout_toRightOf="@+id/tv_login_powered"
+            android:layout_toEndOf="@+id/tv_login_powered"
             android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
             android:background="@drawable/iidea_logo"

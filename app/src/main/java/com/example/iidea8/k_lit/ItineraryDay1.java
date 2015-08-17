@@ -20,7 +20,7 @@ import java.util.ArrayList;
 
 public class ItineraryDay1 extends Fragment  {
     private View view;
-    private ArrayList<Day1GnS> day1GnSArray = new ArrayList<Day1GnS>();
+    private ArrayList<DaysGnS> daysGnSArray = new ArrayList<DaysGnS>();
 
     @Nullable
     @Override
@@ -31,7 +31,7 @@ public class ItineraryDay1 extends Fragment  {
         return view;
     }
 
-    public class Day1Async extends AsyncTask<String, Void, ArrayList<Day1GnS>> {
+    public class Day1Async extends AsyncTask<String, Void, ArrayList<DaysGnS>> {
 
 
         ProgressBar pb = (ProgressBar) view.findViewById(R.id.day1_progressBar);
@@ -42,9 +42,9 @@ public class ItineraryDay1 extends Fragment  {
             super.onPreExecute();
         }
         @Override
-        protected ArrayList<Day1GnS> doInBackground(String... params) {
+        protected ArrayList<DaysGnS> doInBackground(String... params) {
           JSONArray rootArray = HttpManager.getData(params[0]);
-            Day1GnS day1GnS = null;
+            DaysGnS daysGnS = null;
 
             try {
                  JSONObject rootObject1 = rootArray.getJSONObject(0);
@@ -98,12 +98,12 @@ public class ItineraryDay1 extends Fragment  {
                      subEventStringBuilder.toString();
                 }
 
-                 day1GnS = new Day1GnS();
-                 day1GnS.setEventName(eventName);
-                 day1GnS.setTime(start_time + "-" + end_time);
-                 day1GnS.setSpeakers(subEventStringBuilder);
-                 day1GnS.setModerator(moderatedBy.append(moderaterStringBuilder).append(curatedBy).append(curatorStringBuilder));
-                 day1GnSArray.add(day1GnS);
+                 daysGnS = new DaysGnS();
+                 daysGnS.setEventName(eventName);
+                 daysGnS.setTime(start_time + "-" + end_time);
+                 daysGnS.setSpeakers(subEventStringBuilder);
+                 daysGnS.setModerator(moderatedBy.append(moderaterStringBuilder).append(curatedBy).append(curatorStringBuilder));
+                 daysGnSArray.add(daysGnS);
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -153,25 +153,25 @@ public class ItineraryDay1 extends Fragment  {
                                 .append(speakerProfile).append("\n");
                     }
                     speakerStringBuilder.toString();
-                    day1GnS = new Day1GnS();
-                    day1GnS.setEventName(eventName);
-                    day1GnS.setTime(start_time + "-" + end_time);
-                    day1GnS.setSpeakers(speakerStringBuilder);
-                    day1GnS.setModerator(moderatedBy.append(moderaterStringBuilder).append(curatedBy).append(curatorStringBuilder));
-                    day1GnSArray.add(day1GnS);
+                    daysGnS = new DaysGnS();
+                    daysGnS.setEventName(eventName);
+                    daysGnS.setTime(start_time + "-" + end_time);
+                    daysGnS.setSpeakers(speakerStringBuilder);
+                    daysGnS.setModerator(moderatedBy.append(moderaterStringBuilder).append(curatedBy).append(curatorStringBuilder));
+                    daysGnSArray.add(daysGnS);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
-            return day1GnSArray;
+            return daysGnSArray;
         }
 
         @Override
-        protected void onPostExecute(ArrayList<Day1GnS> result) {
+        protected void onPostExecute(ArrayList<DaysGnS> result) {
             ListView listViewDay1 = (ListView) view.findViewById(R.id.list_view_day1);
-            Day1Adapter day1Adapter = new Day1Adapter(getActivity().getBaseContext(),result);
-            listViewDay1.setAdapter(day1Adapter);
+            DaysAdapter daysAdapter = new DaysAdapter(getActivity().getBaseContext(),result);
+            listViewDay1.setAdapter(daysAdapter);
             pb.setVisibility(View.INVISIBLE);
             super.onPostExecute(result);
         }

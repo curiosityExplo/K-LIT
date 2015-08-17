@@ -11,66 +11,50 @@
 
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/iv_login_main"
         android:layout_width="200sp"
         android:layout_height="150sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/logo_kumaun" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView2"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
-        android:text="Login ID" />
-
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/et_login_email"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
+        android:layout_below="@+id/iv_login_main"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="1dp" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/editText1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:text="Password" />
+        android:layout_marginTop="10dp"
+        android:hint="Email ID" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/et_login_password"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textView2"
+        android:layout_below="@+id/et_login_email"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="1dp"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:hint="Password"/>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/bt_login_signIn"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/et_login_password"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="20dp"
         android:background="@color/green"
         android:onClick="SignningIn"
         android:text="Sign In" />
 
     <Button
         android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:layout_below="@+id/button1"
+        android:layout_height="40dp"
+        android:layout_below="@+id/bt_login_signIn"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         android:background="@color/dark_green_transparent"
         android:onClick="registerClick"
         android:text="Register"
@@ -83,7 +67,7 @@
         android:layout_marginLeft="77dp">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tv_login_powered"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
@@ -91,37 +75,37 @@
             android:text="powered by" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/bt_login_ideaWebClick"
             android:layout_width="90dp"
             android:layout_height="35dp"
             android:layout_alignParentBottom="true"
             android:layout_marginLeft="5dp"
             android:layout_marginStart="5dp"
-            android:layout_toEndOf="@+id/textView3"
-            android:layout_toRightOf="@+id/textView3"
+            android:layout_toEndOf="@+id/tv_login_powered"
+            android:layout_toRightOf="@+id/tv_login_powered"
             android:background="@drawable/iidea_logo"
             android:onClick="webClick" />
 
     </RelativeLayout>
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_login_or"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button1"
+        android:layout_below="@+id/bt_login_signIn"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="65dp"
         android:text="OR"
         android:textSize="17sp"
         android:textStyle="bold"/>
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="240dp"
-        android:layout_height="40dp"
-        android:layout_below="@+id/textView"
+        android:id="@+id/bt_login_facebook"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_login_or"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="10dp"
         android:background="@color/facebook_blue"
         android:text="Facebook Login"
         android:textAllCaps="false"

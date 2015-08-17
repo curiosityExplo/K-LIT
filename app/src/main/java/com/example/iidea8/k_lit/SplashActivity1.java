@@ -8,20 +8,20 @@ import android.os.Handler;
 /**
  * Created by Abhigyan on 7/25/2015.
  */
-public class SplashActivity extends Activity {
+public class SplashActivity1 extends Activity {
 
 
-    private final int SPLASH_TIME_OUT = 3000;
+    private final int SPLASH_TIME_OUT = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash);
+        setContentView(R.layout.activity_splash_1);
 
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                Intent intent = new Intent(SplashActivity1.this, SplashActivity2.class);
                 startActivity(intent);
                 finish();
             }

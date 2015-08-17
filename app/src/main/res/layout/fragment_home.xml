@@ -17,61 +17,63 @@
         android:background="@color/white">
 
         <ImageView
-            android:id="@+id/imageView1"
+            android:id="@+id/iv_home"
             android:layout_width="200sp"
             android:layout_height="200sp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:src="@drawable/logo_kumaun" />
 
-        <TextView
-            android:id="@+id/tvVision"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imageView1"
-            android:layout_centerHorizontal="true"
-            android:text="Vision"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
 
         <TextView
             android:id="@+id/tvHomeDesc"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvVision"
-            android:layout_marginTop="10dp"
+            android:layout_below="@id/iv_home"
+            android:layout_marginTop="30dp"
             android:text=""
             android:textSize="18sp" />
 
-        <TextView
-            android:id="@+id/textView3"
+
+
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
             android:layout_below="@id/tvHomeDesc"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
-            android:text="powered by" />
+            android:layout_marginLeft="63dp">
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="80dp"
-            android:layout_height="30dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginLeft="5dp"
-            android:layout_marginStart="5dp"
-            android:layout_toEndOf="@+id/textView3"
-            android:layout_toRightOf="@+id/textView3"
-            android:background="@drawable/iidea_logo"
-            android:onClick="webClick" />
+            <TextView
+                android:id="@+id/tv_login_powered"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="powered by" />
+
+            <Button
+                android:id="@+id/bt_login_ideaWebClick"
+                android:layout_width="100dp"
+                android:layout_height="35dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_toEndOf="@+id/tv_login_powered"
+                android:layout_toRightOf="@+id/tv_login_powered"
+                android:background="@drawable/iidea_logo"
+                android:onClick="webClick" />
+
+        </RelativeLayout>
 
         <ProgressBar
+            style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/homeProgressBar"
-            android:layout_above="@+id/tvVision"
-            android:layout_centerHorizontal="true" />
+            android:layout_above="@+id/tvHomeDesc"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="0dp"/>
+
 
     </RelativeLayout>
 </ScrollView>
