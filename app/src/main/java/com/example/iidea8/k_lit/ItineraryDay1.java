@@ -4,7 +4,9 @@ package com.example.iidea8.k_lit;
 import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +31,25 @@ public class ItineraryDay1 extends Fragment  {
         new Day1Async().execute("http://iidea8.webuda.com/services/itenary_service.php?date=2015-10-23");
         setRetainInstance(true);
         return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        final SwipeRefreshLayout day1Swipe = (SwipeRefreshLayout) view.findViewById(R.id.day1_swipe);
+        day1Swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                day1Swipe.setRefreshing(true);
+                (new Handler()).postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        day1Swipe.setRefreshing(false);
+
+                        new Day1Async().execute("http://iidea8.webuda.com/services/itenary_service.php?date=2015-10-23");
+                    }
+                }, 3000);
+            }
+        });
     }
 
     public class Day1Async extends AsyncTask<String, Void, ArrayList<DaysGnS>> {

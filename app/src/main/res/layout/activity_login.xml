@@ -86,6 +86,13 @@
             android:background="@drawable/iidea_logo"
             android:onClick="webClick" />
 
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/login_progressBar"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true" />
+
     </RelativeLayout>
 
     <TextView
@@ -99,17 +106,15 @@
         android:textSize="17sp"
         android:textStyle="bold"/>
 
-    <Button
-        android:id="@+id/bt_login_facebook"
+    <com.facebook.login.widget.LoginButton
+        android:id="@+id/login_button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
         android:layout_below="@+id/tv_login_or"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:background="@color/facebook_blue"
-        android:text="Facebook Login"
-        android:textAllCaps="false"
-        android:textColor="@color/white" />
+        android:textSize="21sp"/>
 
 
 </RelativeLayout>
