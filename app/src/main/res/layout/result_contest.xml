@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <TextView
+        android:id="@+id/tv_result_contest"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:text="" />
+
+    <Button
+        android:id="@+id/bt_result_contest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_result_contest"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30sp"
+        android:shadowColor="@color/dark_green_transparent"
+        android:text="Finish"
+        android:background="@color/dark_green_transparent"
+        android:textColorHighlight="@color/dark_green"
+        android:textSize="20sp" />
+
+</RelativeLayout>

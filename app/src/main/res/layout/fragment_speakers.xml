@@ -1,4 +1,4 @@
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,103 +9,16 @@
     tools:context="com.example.iidea8.k_lit.SpeakersActivity"
     android:background="#fff">
 
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <ImageView
-            android:id="@+id/iv_speaker_aanchal"
-            android:layout_width="110sp"
-            android:layout_height="150sp"
-            android:src="@drawable/speaker_aanchal_malhotra" />
-
-        <TextView
-            android:id="@+id/tv_speaker_aanchal"
-            android:layout_width="fill_parent"
-            android:layout_height="150dp"
-            android:layout_marginLeft="10dp"
-            android:layout_toEndOf="@+id/iv_speaker_aanchal"
-            android:layout_toRightOf="@+id/iv_speaker_aanchal"
-            android:text="@string/anchal_bio" />
-        <ImageView
-            android:id="@+id/iv_speaker_abha"
-            android:layout_width="110sp"
-            android:layout_height="150sp"
-            android:src="@drawable/speaker_abha_iyengar"
-            android:layout_below="@+id/tv_speaker_aanchal"
-            android:layout_marginTop="30dp" />
-
-        <TextView
-            android:id="@+id/tv_speaker_abha"
-            android:layout_width="fill_parent"
-            android:layout_height="150dp"
-            android:layout_marginLeft="10dp"
-            android:layout_toEndOf="@+id/iv_speaker_abha"
-            android:layout_toRightOf="@+id/iv_speaker_abha"
-            android:text="@string/abha_bio"
-            android:layout_below="@+id/tv_speaker_aanchal"
-            android:layout_marginTop="30dp" />
-
-        <ImageView
-            android:id="@+id/iv_speaker_aditya"
-            android:layout_width="110sp"
-            android:layout_height="150sp"
-            android:src="@drawable/speaker_aditya_bal"
-            android:layout_below="@+id/tv_speaker_abha"
-            android:layout_marginTop="30dp" />
-
-        <TextView
-            android:id="@+id/tv_speaker_aditya"
-            android:layout_width="fill_parent"
-            android:layout_height="150dp"
-            android:layout_marginLeft="10dp"
-            android:layout_toEndOf="@+id/iv_speaker_aditya"
-            android:layout_toRightOf="@+id/iv_speaker_aditya"
-            android:text="@string/aditya_bio"
-            android:layout_below="@+id/tv_speaker_abha"
-            android:layout_marginTop="30dp" />
-
-        <ImageView
-            android:id="@+id/iv_speaker_advaita"
-            android:layout_width="110sp"
-            android:layout_height="150sp"
-            android:src="@drawable/speaker_advaita_kala"
-            android:layout_below="@+id/tv_speaker_aditya"
-            android:layout_marginTop="30dp" />
-
-        <TextView
-            android:id="@+id/tv_speaker_advaita"
-            android:layout_width="fill_parent"
-            android:layout_height="150dp"
-            android:layout_marginLeft="10dp"
-            android:layout_toEndOf="@+id/iv_speaker_advaita"
-            android:layout_toRightOf="@+id/iv_speaker_advaita"
-            android:text="@string/advaita_bio"
-            android:layout_below="@+id/tv_speaker_aditya"
-            android:layout_marginTop="30dp" />
+    <ListView
+        android:id="@+id/speakers_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:divider="@color/dark_green_transparent"
+        tools:listitem="@layout/speakers_listview_item">
+        <!--android:dividerHeight="1dp"-->
 
 
-        <ImageView
-            android:id="@+id/iv_speaker_alka"
-            android:layout_width="110sp"
-            android:layout_height="150sp"
-            android:layout_below="@+id/tv_speaker_advaita"
-            android:layout_marginTop="30dp"
-            android:src="@drawable/speaker_alka_pande" />
-
-        <TextView
-            android:id="@+id/tv_speaker_alka"
-            android:layout_width="fill_parent"
-            android:layout_height="150dp"
-            android:layout_below="@+id/tv_speaker_advaita"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="30dp"
-            android:layout_toEndOf="@+id/iv_speaker_alka"
-            android:layout_toRightOf="@+id/iv_speaker_alka"
-            android:text="@string/alka_bio" />
+    </ListView>
 
 
-    </RelativeLayout>
-
-
-</ScrollView>
+</LinearLayout>

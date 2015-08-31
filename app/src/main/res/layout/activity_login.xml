@@ -21,6 +21,7 @@
 
     <EditText
         android:id="@+id/et_login_email"
+        android:inputType="textEmailAddress"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/iv_login_main"
@@ -35,8 +36,8 @@
         android:layout_below="@+id/et_login_email"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="1dp"
-        android:inputType="textPassword"
-        android:hint="Password"/>
+        android:hint="Password"
+        android:inputType="textPassword" />
 
     <Button
         android:id="@+id/bt_login_signIn"
@@ -87,11 +88,11 @@
             android:onClick="webClick" />
 
         <ProgressBar
+            android:id="@+id/login_progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/login_progressBar"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true" />
 
     </RelativeLayout>
 
@@ -104,16 +105,24 @@
         android:layout_marginTop="65dp"
         android:text="OR"
         android:textSize="17sp"
-        android:textStyle="bold"/>
+        android:textStyle="bold" />
 
     <com.facebook.login.widget.LoginButton
-        android:id="@+id/login_button"
+        android:id="@+id/fb_login_button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
         android:layout_below="@+id/tv_login_or"
         android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
         android:layout_marginTop="10dp"
+        android:textSize="21sp" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/sign_in_button"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/fb_login_button"
+        android:layout_centerHorizontal="true"
         android:textSize="21sp"/>
 
 

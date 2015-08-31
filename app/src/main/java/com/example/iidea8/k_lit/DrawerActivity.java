@@ -1,5 +1,6 @@
 package com.example.iidea8.k_lit;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -7,12 +8,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.google.android.gms.common.api.GoogleApiClient;
 
 
 public class DrawerActivity extends ActionBarActivity {
@@ -23,6 +27,7 @@ public class DrawerActivity extends ActionBarActivity {
     private DrawerLayout mdrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private CharSequence getActivity;
+    GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +54,8 @@ public class DrawerActivity extends ActionBarActivity {
         mDrawerToggle.setDrawerIndicatorEnabled(true);
         mdrawerLayout.setDrawerListener(mDrawerToggle);
 
-        getFragmentManager().beginTransaction().replace(R.id.frame_layout, new Home())
+        getFragmentManager().beginTransaction()
+                            .replace(R.id.frame_layout, new Home()).addToBackStack("home")
                             .commit();
         setTitle(null);
 
@@ -57,6 +63,29 @@ public class DrawerActivity extends ActionBarActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+
+            if (getFragmentManager().getBackStackEntryCount() > 1) {
+                getFragmentManager().popBackStack();
+                getFragmentManager().beginTransaction().commit();
+
+
+            } else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("EXIT!");
+                builder.setMessage("Do you really wish to exit..?");
+                builder.setNegativeButton("NO", null);
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        DrawerActivity.super.onBackPressed();
+                    }
+                });
+                builder.show();
+
+            }
+    }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
@@ -105,28 +134,30 @@ public class DrawerActivity extends ActionBarActivity {
     public void onClick_day1(View view) {
 
         getFragmentManager().beginTransaction()
-                .replace(R.id.frame_layout, new ItineraryDay1()).commit();
+                .replace(R.id.frame_layout, new ItineraryDay1()).addToBackStack("iti1").commit();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
 
     }
 
     public void onClick_day2(View view) {
         getFragmentManager().beginTransaction()
-                .replace(R.id.frame_layout, new ItineraryDay2()).commit();
+                .replace(R.id.frame_layout, new ItineraryDay2()).addToBackStack("iti2").commit();
     }
 
     public void onClick_day3(View view) {
         getFragmentManager().beginTransaction()
-                .replace(R.id.frame_layout, new ItineraryDay3()).commit();
+                .replace(R.id.frame_layout, new ItineraryDay3()).addToBackStack("iti3").commit();
     }
 
     public void onClick_day4(View view) {
         getFragmentManager().beginTransaction()
-                .replace(R.id.frame_layout, new ItineraryDay4()).commit();
+                .replace(R.id.frame_layout, new ItineraryDay4()).addToBackStack("iti4").commit();
     }
 
     public void onClick_day5(View view) {
         getFragmentManager().beginTransaction()
-                .replace(R.id.frame_layout, new ItineraryDay5()).commit();
+                .replace(R.id.frame_layout, new ItineraryDay5()).addToBackStack("iti5").commit();
     }
 
 
@@ -142,46 +173,46 @@ public class DrawerActivity extends ActionBarActivity {
             switch (position){
                 case 0:
                     getFragmentManager().beginTransaction()
-                            .replace(R.id.frame_layout, new Home()).commit();
+                            .replace(R.id.frame_layout, new Home()).addToBackStack("hom").commit();
                     break;
 
                 case 1:
                     getFragmentManager().beginTransaction()
-                            .replace(R.id.frame_layout, new Itinerary()).commit();
+                            .replace(R.id.frame_layout, new Itinerary()).addToBackStack("iti").commit();
+                    ActionBar actionBar = getSupportActionBar();
+                    actionBar.setDisplayHomeAsUpEnabled(true);
                     break;
+
 
                 case 2:
                     getFragmentManager().beginTransaction()
-                            .replace(R.id.frame_layout, new Speakers()).commit();
+                            .replace(R.id.frame_layout, new Speakers()).addToBackStack("spk").commit();
                     break;
 
                 case 3:
                     getFragmentManager().beginTransaction()
-                            .replace(R.id.frame_layout, new Overview()).commit();
+                            .replace(R.id.frame_layout, new Overview()).addToBackStack("ovr").commit();
                     break;
 
                 case 4:
                     getFragmentManager().beginTransaction()
-                            .replace(R.id.frame_layout, new Quiz()).commit();
+                            .replace(R.id.frame_layout, new TermsFragment()).commit();
                     break;
 
                 case 5:
                     getFragmentManager().beginTransaction()
-                            .replace(R.id.frame_layout, new Gallery()).commit();
+                            .replace(R.id.frame_layout, new Gallery()).addToBackStack("gal").commit();
                     break;
 
                 case 6:
                     getFragmentManager().beginTransaction()
-                            .replace(R.id.frame_layout, new Sponsors()).commit();
+                            .replace(R.id.frame_layout, new Sponsors()).addToBackStack("spo").commit();
                     break;
 
                 case 7:
                     Intent intent = new Intent(DrawerActivity.this, LogoutActivity.class);
                     startActivity(intent);
                     break;
-                default:
-                    getFragmentManager().beginTransaction()
-                            .replace(R.id.frame_layout, new Home()).commit();
             }
 
 

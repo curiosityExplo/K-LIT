@@ -3,7 +3,9 @@ package com.example.iidea8.k_lit;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -19,6 +21,11 @@ import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.plus.Plus;
+import com.google.android.gms.plus.model.people.Person;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -43,18 +50,25 @@ import java.util.ArrayList;
 /**
  * Created by Abhigyan on 7/25/2015.
  */
-public class LoginActivity extends Activity {
+public class LoginActivity extends Activity implements GoogleApiClient.ConnectionCallbacks,
+        GoogleApiClient.OnConnectionFailedListener,
+        View.OnClickListener {
 
-    private EditText etRegisterName;
-    private EditText etRegisterContact;
-    private EditText etRegisterEmail;
-    private EditText etRegisterPassword;
+    private boolean mIsResolving = false;
+    private boolean mShouldResolve = false;
+    private ConnectionResult mConnectionResult;
+    private static final int RC_SIGN_IN = 0;
+    private GoogleApiClient mGoogleApiClient;
     private EditText etLoginEmail;
+
     private EditText etLoginPassword;
     private LoginButton loginButton;
     private CallbackManager callbackManager;
-    private ProgressBar pbLogin;
-
+    private ProgressBar pb;
+    InterfaceContestUser interfaceContestUser;
+    public User loginuser;
+    public String loggedName;
+    public String loggedEmail;
 
     private UserLocalStore userLocalStore;
     ProgressDialog progressDialog;
@@ -67,17 +81,32 @@ public class LoginActivity extends Activity {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getApplicationContext());
         setContentView(R.layout.activity_login);
-        loginButton = (LoginButton)findViewById(R.id.login_button);
+//        loginuser = new User(loggedName, loggedEmail, 0);
+        pb = (ProgressBar) findViewById(R.id.login_progressBar);
+        pb.setVisibility(View.INVISIBLE);
+        ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
+        progressDialog.setTitle("Processing");
+        progressDialog.setMessage("Please wait...");
+        progressDialog.setCancelable(false);
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this)
+                .addApi(Plus.API, Plus.PlusOptions.builder().build())
+                .addScope(Plus.SCOPE_PLUS_LOGIN)
+                .build();
+        loginButton = (LoginButton) findViewById(R.id.fb_login_button);
         userLocalStore = new UserLocalStore(this);
         etLoginEmail = (EditText) findViewById(R.id.et_login_email);
         etLoginPassword = (EditText) findViewById(R.id.et_login_password);
-        pbLogin = (ProgressBar) findViewById(R.id.login_progressBar);
+        findViewById(R.id.sign_in_button).setOnClickListener(this);
 
         callbackManager = CallbackManager.Factory.create();
         loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+
+
             @Override
             public void onSuccess(LoginResult loginResult) {
-               userLocalStore.setUserLoggedIn(true);
+                userLocalStore.setUserLoggedIn(true);
                 startActivity(new Intent(LoginActivity.this, DrawerActivity.class));
                 Toast.makeText(LoginActivity.this, "WELCOME TO KLF", Toast.LENGTH_LONG).show();
                 finish();
@@ -89,18 +118,127 @@ public class LoginActivity extends Activity {
 
             @Override
             public void onError(FacebookException e) {
-                Toast.makeText(LoginActivity.this, "Network Error... Try again", Toast.LENGTH_LONG).show();
-                finish();
+                AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+                builder.setTitle("Please Try Again..");
+                builder.setMessage("NETWORK ERROR!");
+                builder.setPositiveButton("OK", null);
+                builder.show();
             }
         });
 
     }
 
     @Override
+    public void onConnectionFailed(ConnectionResult connectionResult) {
+        if (!connectionResult.hasResolution()) {
+
+            GooglePlayServicesUtil.getErrorDialog(connectionResult.getErrorCode(), this, 0).show();
+            return;
+        }
+
+        if (!mIsResolving) {
+            // store mConnectionResult
+            mConnectionResult = connectionResult;
+
+            if (mShouldResolve) {
+                resolveSignInError();
+
+            }
+        }
+    }
+
+
+    @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN) {
+            if (resultCode != RESULT_OK) {
+                mShouldResolve = false;
+            }
+
+            mIsResolving = false;
+            if (!mGoogleApiClient.isConnecting()) {
+                mGoogleApiClient.connect();
+            }
+        }
     }
+
+    private void resolveSignInError() {
+
+        if (mConnectionResult.hasResolution()) {
+
+            try {
+               mIsResolving = true;
+                mConnectionResult.startResolutionForResult(this, RC_SIGN_IN);
+
+            } catch (IntentSender.SendIntentException e) {
+                mIsResolving = false;
+                mGoogleApiClient.connect();
+            }
+        }
+    }
+
+
+    @Override
+    public void onConnected(Bundle bundle) {
+        mShouldResolve = false;
+        startActivity(new Intent(LoginActivity.this, DrawerActivity.class));
+        finish();
+        getProfileInformation();
+        Toast.makeText(LoginActivity.this,"WELCOME TO KLF",Toast.LENGTH_LONG).show();
+        userLocalStore.setUserLoggedIn(true);
+    }
+
+    private void getProfileInformation() {
+        if (Plus.PeopleApi.getCurrentPerson(mGoogleApiClient) != null) {
+            Person currentPerson = Plus.PeopleApi.getCurrentPerson(mGoogleApiClient);
+            String personName = currentPerson.getDisplayName();
+            String email = Plus.AccountApi.getAccountName(mGoogleApiClient);
+//          String personPhotoUrl = currentPerson.getImage().getUrl();
+            Toast.makeText(LoginActivity.this,"Hello, " + personName,Toast.LENGTH_SHORT).show();
+        }
+    }
+
+        @Override
+        public void onConnectionSuspended ( int i){
+            mGoogleApiClient.connect();
+        }
+
+        @Override
+        public void onClick (View v){
+            if (v.getId() == R.id.sign_in_button) {
+                if (mGoogleApiClient.isConnected()) {
+                    Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
+                    mGoogleApiClient.disconnect();
+                }
+                onSignInClicked();
+            }
+        }
+
+    public void onSignInClicked() {
+
+        googlePlusLogin();
+    }
+
+    private void googlePlusLogin(){
+        if (!mGoogleApiClient.isConnecting()){
+            mShouldResolve = true;
+            mGoogleApiClient.connect();
+            //resolveSignInError();
+        }
+    }
+    public void logout(){
+        googlePlusLogout();
+    }
+
+    private void googlePlusLogout(){
+        if (mGoogleApiClient.isConnected()){
+        Plus.AccountApi.clearDefaultAccount(mGoogleApiClient);
+        mGoogleApiClient.disconnect();
+         }
+    }
+
 
     public void registerClick(View view) {
         Intent intent = new Intent(LoginActivity.this, Register.class);
@@ -108,17 +246,18 @@ public class LoginActivity extends Activity {
         finish();
     }
 
+
     public void webClick(View view) {
         Uri uri = Uri.parse("http://www.iidea8.com/");
         Intent intent = new Intent(Intent.ACTION_VIEW, uri);
         startActivity(intent);
     }
 
-
     @Override
     protected void onStart() {
         super.onStart();
         if (authenticate() == true) {
+            mGoogleApiClient.connect();
             Intent intent = new Intent(LoginActivity.this, DrawerActivity.class);
             startActivity(intent);
             Toast.makeText(LoginActivity.this, "WELCOME TO KLF", Toast.LENGTH_LONG).show();
@@ -131,45 +270,41 @@ public class LoginActivity extends Activity {
     }
 
     public void SignningIn(View view) {
-        pbLogin.setVisibility(View.VISIBLE);
         String email = etLoginEmail.getText().toString();
         String password = etLoginPassword.getText().toString();
 
         User loggedUser = new User(email, password);
-        new fetchUserDataAsync(loggedUser).execute();
+        new fetchUserDataAsync(loggedUser, interfaceContestUser).execute();
     }
 
 
-    //    public void checkUser(User user) {
-//        new fetchUserDataAsync(user, new GetUserCallBacks() {
-//            @Override
-//            public void done(User returnedUser) {
-//                if (returnedUser == null) {
-//                    Toast.makeText(LoginActivity.this, "Invalid Details..", Toast.LENGTH_LONG).show();
-//                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-//                    builder.setMessage("Incorrect Details!");
-//                    builder.setPositiveButton("OK", null);
-//                } else {
-//                    Intent intent = new Intent(LoginActivity.this, DrawerActivity.class);
-//                    startActivity(intent);
-//                    Toast.makeText(LoginActivity.this, "WELCOME TO KLF", Toast.LENGTH_LONG).show();
-//                    finish();
-//                    userLocalStore.storeUserData(returnedUser);
-//                    userLocalStore.setUserLoggedIn(true);
-//                }
-//
-//            }
-//        });
-//    }
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("EXIT!");
+        builder.setMessage("Do you really wish to exit..?");
+        builder.setNegativeButton("NO", null);
+        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+               LoginActivity.super.onBackPressed();
+
+            }
+        });
+        builder.show();
+    }
 
     public class fetchUserDataAsync extends AsyncTask<Void, Void, User> {
 
         User user;
-        GetUserCallBacks userCallBacks;
+        InterfaceContestUser contestUser;
+//        ProgressBar pb = (ProgressBar) findViewById(R.id.login_progressBar);
 
 
-        public fetchUserDataAsync(User user) {
+        public fetchUserDataAsync(User user, InterfaceContestUser contestUser) {
             this.user = user;
+            this.contestUser = contestUser;
         }
 
         @Override
@@ -202,9 +337,8 @@ public class LoginActivity extends Activity {
                     String name = jsonObject.getString("NAME");
                     String email = jsonObject.getString("EMAIL");
                     String password = jsonObject.getString("PASSWORD");
-                    int contact = Integer.parseInt(jsonObject.getString("CONTACT_NO"));
 
-                    returnedUser = new User(name, email, password, contact);
+                    returnedUser = new User(name, email, password);
                 }
 
 
@@ -222,7 +356,6 @@ public class LoginActivity extends Activity {
 
         @Override
         protected void onPostExecute(User returnedUser) {
-            pbLogin.setVisibility(View.INVISIBLE);
             if (returnedUser == null) {
                 AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
                 builder.setTitle("Please Try Again..");
@@ -231,12 +364,13 @@ public class LoginActivity extends Activity {
                 builder.show();
 //                startActivity(new Intent(LoginActivity.this, LoginActivity.class));
 //                finish();
-            }else{
+            } else {
                 userLocalStore.storeUserData(returnedUser);
                 userLocalStore.setUserLoggedIn(true);
                 startActivity(new Intent(LoginActivity.this, DrawerActivity.class));
                 finish();
             }
+            contestUser.loggedUser(returnedUser);
             super.onPostExecute(returnedUser);
         }
     }

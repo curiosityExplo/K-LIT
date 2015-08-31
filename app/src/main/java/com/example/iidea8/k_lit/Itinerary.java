@@ -18,4 +18,9 @@ public class Itinerary extends Fragment {
         view = inflater.inflate(R.layout.fragment_itinerary, container, false);
         return view;
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        MyApplication.getInstance().trackScreenView("Itinerary");
+    }
 }

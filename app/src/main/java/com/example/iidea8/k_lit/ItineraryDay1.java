@@ -4,9 +4,7 @@ package com.example.iidea8.k_lit;
 import android.app.Fragment;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,36 +18,18 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 
-public class ItineraryDay1 extends Fragment  {
+public class ItineraryDay1 extends Fragment {
     private View view;
     private ArrayList<DaysGnS> daysGnSArray = new ArrayList<DaysGnS>();
+    private DaysAdapter daysAdapter;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_itinerary_day1, container, false);
+        ListView listViewDay1 = (ListView) view.findViewById(R.id.list_view_day1);
         new Day1Async().execute("http://iidea8.webuda.com/services/itenary_service.php?date=2015-10-23");
-        setRetainInstance(true);
         return view;
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        final SwipeRefreshLayout day1Swipe = (SwipeRefreshLayout) view.findViewById(R.id.day1_swipe);
-        day1Swipe.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                day1Swipe.setRefreshing(true);
-                (new Handler()).postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        day1Swipe.setRefreshing(false);
-
-                        new Day1Async().execute("http://iidea8.webuda.com/services/itenary_service.php?date=2015-10-23");
-                    }
-                }, 3000);
-            }
-        });
     }
 
     public class Day1Async extends AsyncTask<String, Void, ArrayList<DaysGnS>> {
@@ -62,17 +42,18 @@ public class ItineraryDay1 extends Fragment  {
             pb.setVisibility(View.VISIBLE);
             super.onPreExecute();
         }
+
         @Override
         protected ArrayList<DaysGnS> doInBackground(String... params) {
-          JSONArray rootArray = HttpManager.getData(params[0]);
+            JSONArray rootArray = HttpManager.getData(params[0]);
             DaysGnS daysGnS = null;
 
             try {
-                 JSONObject rootObject1 = rootArray.getJSONObject(0);
-            String eventName = rootObject1.getString("event_Name");
-            String start_time = rootObject1.getString("EVENT_START_TIME");
-            String end_time = rootObject1.getString("EVENT_END_TIME");
-            JSONArray subEventArray = rootObject1.getJSONArray("sub_event_Children");
+                JSONObject rootObject1 = rootArray.getJSONObject(0);
+                String eventName = rootObject1.getString("event_Name");
+                String start_time = rootObject1.getString("EVENT_START_TIME");
+                String end_time = rootObject1.getString("EVENT_END_TIME");
+                JSONArray subEventArray = rootObject1.getJSONArray("sub_event_Children");
                 JSONArray moderaterArray = rootObject1.getJSONArray("moderator_Children");
                 JSONArray curaterArray = rootObject1.getJSONArray("curator_Children");
 
@@ -84,7 +65,7 @@ public class ItineraryDay1 extends Fragment  {
                 StringBuilder curatedBy = new StringBuilder();
                 curatedBy.append("\n").append("Curated By:  ");
 
-                for (int m=0; m<moderaterArray.length();m++){
+                for (int m = 0; m < moderaterArray.length(); m++) {
                     JSONObject moderaterObjects = moderaterArray.getJSONObject(m);
                     String moderaterFirstName = moderaterObjects.getString("Moderator_name");
                     String moderaterLastName = moderaterObjects.getString("Moderator_last_name");
@@ -92,45 +73,45 @@ public class ItineraryDay1 extends Fragment  {
                             .append(moderaterLastName).append("  ");
                 }
 
-                for (int c=0; c<curaterArray.length();c++){
+                for (int c = 0; c < curaterArray.length(); c++) {
                     JSONObject curaterObjects = curaterArray.getJSONObject(c);
                     String curaterFirstName = curaterObjects.getString("curator_name");
                     String curaterLastName = curaterObjects.getString("curator_last_name");
                     curatorStringBuilder.append(curaterFirstName)
-                                          .append(" ").append(curaterLastName).append(" ");
+                            .append(" ").append(curaterLastName).append(" ");
                 }
 
-                for (int s=0; s<subEventArray.length(); s++){
-                     JSONObject subEventObjects = subEventArray.getJSONObject(s);
-                     JSONArray subChildrenArray = subEventObjects.getJSONArray("Children");
-                     StringBuilder speaker = new StringBuilder(subChildrenArray.length());
+                for (int s = 0; s < subEventArray.length(); s++) {
+                    JSONObject subEventObjects = subEventArray.getJSONObject(s);
+                    JSONArray subChildrenArray = subEventObjects.getJSONArray("Children");
+                    StringBuilder speaker = new StringBuilder(subChildrenArray.length());
 
-                     for (int j=0;j<subChildrenArray.length();j++){
-                         JSONObject subChildrenObject = subChildrenArray.getJSONObject(j);
-                         String speakerFirstName = subChildrenObject.getString("SPEAKER_NAME");
-                         String speakerLastName = subChildrenObject.getString("SPEAKER_LAST_NAME");
-                         String speakerProf = subChildrenObject.getString("SPEAKER_PROFILE");
-                         String speakerProfile = (", " + speakerProf);
-                         speaker.append("\n").append(speakerFirstName).append(" ").append(speakerLastName)
-                                 .append(speakerProfile);
-                     }
-                     String subName = subEventObjects.getString("sub_event_Name");
-                     subEventStringBuilder.append(subName).append(speaker).append("\n \n");
-                     subEventStringBuilder.toString();
+                    for (int j = 0; j < subChildrenArray.length(); j++) {
+                        JSONObject subChildrenObject = subChildrenArray.getJSONObject(j);
+                        String speakerFirstName = subChildrenObject.getString("SPEAKER_NAME");
+                        String speakerLastName = subChildrenObject.getString("SPEAKER_LAST_NAME");
+                        String speakerProf = subChildrenObject.getString("SPEAKER_PROFILE");
+                        String speakerProfile = (", " + speakerProf);
+                        speaker.append("\n").append(speakerFirstName).append(" ").append(speakerLastName)
+                                .append(speakerProfile);
+                    }
+                    String subName = subEventObjects.getString("sub_event_Name");
+                    subEventStringBuilder.append(subName).append(speaker).append("\n \n");
+                    subEventStringBuilder.toString();
                 }
 
-                 daysGnS = new DaysGnS();
-                 daysGnS.setEventName(eventName);
-                 daysGnS.setTime(start_time + "-" + end_time);
-                 daysGnS.setSpeakers(subEventStringBuilder);
-                 daysGnS.setModerator(moderatedBy.append(moderaterStringBuilder).append(curatedBy).append(curatorStringBuilder));
-                 daysGnSArray.add(daysGnS);
+                daysGnS = new DaysGnS();
+                daysGnS.setEventName(eventName);
+                daysGnS.setTime(start_time + "-" + end_time);
+                daysGnS.setSpeakers(subEventStringBuilder);
+                daysGnS.setModerator(moderatedBy.append(moderaterStringBuilder).append(curatedBy).append(curatorStringBuilder));
+                daysGnSArray.add(daysGnS);
 
             } catch (JSONException e) {
                 e.printStackTrace();
             }
 
-            for (int i=1;i<rootArray.length();i++){
+            for (int i = 1; i < rootArray.length(); i++) {
                 try {
                     JSONObject rootObjects = rootArray.getJSONObject(i);
                     String eventName = rootObjects.getString("event_Name");
@@ -148,7 +129,7 @@ public class ItineraryDay1 extends Fragment  {
                     StringBuilder curatedBy = new StringBuilder();
                     curatedBy.append("\n").append("Curated  By:  ");
 
-                    for (int m=0; m<moderaterArray.length();m++){
+                    for (int m = 0; m < moderaterArray.length(); m++) {
                         JSONObject moderaterObjects = moderaterArray.getJSONObject(m);
                         String moderaterFirstName = moderaterObjects.getString("Moderator_name");
                         String moderaterLastName = moderaterObjects.getString("Moderator_last_name");
@@ -156,7 +137,7 @@ public class ItineraryDay1 extends Fragment  {
                                 .append(moderaterLastName).append("  ");
                     }
 
-                    for (int c=0; c<curaterArray.length();c++){
+                    for (int c = 0; c < curaterArray.length(); c++) {
                         JSONObject curaterObjects = curaterArray.getJSONObject(c);
                         String curaterFirstName = curaterObjects.getString("curator_name");
                         String curaterLastName = curaterObjects.getString("curator_last_name");
@@ -164,7 +145,7 @@ public class ItineraryDay1 extends Fragment  {
                                 .append(" ").append(curaterLastName).append("  ");
                     }
 
-                    for (int k=0;k<speakerArray.length();k++){
+                    for (int k = 0; k < speakerArray.length(); k++) {
                         JSONObject speakerObjects = speakerArray.getJSONObject(k);
                         String speakerFirstName = speakerObjects.getString("SPEAKER_NAME");
                         String speakerLastName = speakerObjects.getString("SPEAKER_LAST_NAME");
@@ -191,11 +172,18 @@ public class ItineraryDay1 extends Fragment  {
         @Override
         protected void onPostExecute(ArrayList<DaysGnS> result) {
             ListView listViewDay1 = (ListView) view.findViewById(R.id.list_view_day1);
-            DaysAdapter daysAdapter = new DaysAdapter(getActivity().getBaseContext(),result);
+            DaysAdapter daysAdapter = new DaysAdapter(getActivity().getBaseContext(), result);
             listViewDay1.setAdapter(daysAdapter);
             pb.setVisibility(View.INVISIBLE);
             super.onPostExecute(result);
         }
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        MyApplication.getInstance().trackScreenView("Itinerary Day 1");
+    }
+
 }
+
 

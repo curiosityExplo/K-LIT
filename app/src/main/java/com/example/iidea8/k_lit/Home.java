@@ -57,4 +57,10 @@ public class Home extends Fragment {
             super.onPostExecute(result);
         }
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        MyApplication.getInstance().trackScreenView("Home");
+    }
 }

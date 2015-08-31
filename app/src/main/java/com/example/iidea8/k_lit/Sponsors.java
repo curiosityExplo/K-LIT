@@ -25,4 +25,9 @@ public class Sponsors extends Fragment {
         setRetainInstance(true);
         return view;
     }
+    @Override
+    public void onResume() {
+        super.onResume();
+        MyApplication.getInstance().trackScreenView("Sponsors");
+    }
 }
