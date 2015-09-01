@@ -257,7 +257,7 @@ public class LoginActivity extends Activity implements GoogleApiClient.Connectio
     protected void onStart() {
         super.onStart();
         if (authenticate() == true) {
-            mGoogleApiClient.connect();
+            //mGoogleApiClient.connect();
             Intent intent = new Intent(LoginActivity.this, DrawerActivity.class);
             startActivity(intent);
             Toast.makeText(LoginActivity.this, "WELCOME TO KLF", Toast.LENGTH_LONG).show();
@@ -274,7 +274,7 @@ public class LoginActivity extends Activity implements GoogleApiClient.Connectio
         String password = etLoginPassword.getText().toString();
 
         User loggedUser = new User(email, password);
-        new fetchUserDataAsync(loggedUser, interfaceContestUser).execute();
+        new fetchUserDataAsync(loggedUser).execute();
     }
 
 
@@ -298,13 +298,12 @@ public class LoginActivity extends Activity implements GoogleApiClient.Connectio
     public class fetchUserDataAsync extends AsyncTask<Void, Void, User> {
 
         User user;
-        InterfaceContestUser contestUser;
+
 //        ProgressBar pb = (ProgressBar) findViewById(R.id.login_progressBar);
 
 
-        public fetchUserDataAsync(User user, InterfaceContestUser contestUser) {
+        public fetchUserDataAsync(User user) {
             this.user = user;
-            this.contestUser = contestUser;
         }
 
         @Override
@@ -370,7 +369,6 @@ public class LoginActivity extends Activity implements GoogleApiClient.Connectio
                 startActivity(new Intent(LoginActivity.this, DrawerActivity.class));
                 finish();
             }
-            contestUser.loggedUser(returnedUser);
             super.onPostExecute(returnedUser);
         }
     }
