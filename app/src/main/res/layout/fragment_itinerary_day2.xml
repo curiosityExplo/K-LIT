@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+    <TextView
+        android:id="@+id/dayTwoTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Day Two"
+        android:textColor="@color/dark_grey_transparent"
+        android:textSize="35sp"
+        android:textStyle="bold|italic" />
+
+    <ImageView
+        android:id="@+id/tv_day2_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/days_deco" />
+
+    <ListView
+        android:id="@+id/list_view_day1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_day2_image"
+        android:divider="@color/dark_green_transparent"
+        android:dividerHeight="1dp"
+        tools:listitem="@layout/days_listview_item">
+
+    </ListView>
+
+    <ProgressBar
+        android:id="@+id/day2_progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
+
+</RelativeLayout>
