@@ -22,12 +22,12 @@ import com.google.android.gms.common.api.GoogleApiClient;
 public class DrawerActivity extends ActionBarActivity {
 
 
+    GoogleApiClient mGoogleApiClient;
     private ListView mListView;
     private String[] mListItems;
     private DrawerLayout mdrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private CharSequence getActivity;
-    GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,7 +137,6 @@ public class DrawerActivity extends ActionBarActivity {
                 .replace(R.id.frame_layout, new ItineraryDay1()).addToBackStack("iti1").commit();
         ActionBar actionBar = getSupportActionBar();
         actionBar.setDisplayHomeAsUpEnabled(true);
-
     }
 
     public void onClick_day2(View view) {
@@ -210,6 +209,11 @@ public class DrawerActivity extends ActionBarActivity {
                     break;
 
                 case 7:
+                    getFragmentManager().beginTransaction()
+                            .replace(R.id.frame_layout, new MoreFragment()).addToBackStack("mor").commit();
+                    break;
+
+                case 8:
                     Intent intent = new Intent(DrawerActivity.this, LogoutActivity.class);
                     startActivity(intent);
                     break;

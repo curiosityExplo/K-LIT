@@ -43,8 +43,8 @@
         <activity
             android:name=".LoginActivity"
             android:label="Login"
-            android:theme="@style/AppThemeFullScreen"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeFullScreen">
         </activity>
         <activity
             android:name="com.facebook.FacebookActivity"
@@ -53,15 +53,19 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
         <activity
             android:name=".DrawerActivity"
-            android:label="@string/app_name">
+            android:label="@string/app_name"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".GalleryViewPager">
+        <activity
+            android:name=".GalleryViewPager"
+            android:screenOrientation="portrait">
         </activity>
         <activity android:name=".LogoutActivity">
         </activity>
         <activity
             android:name=".Register"
-            android:label="Register">
+            android:label="Register"
+            android:screenOrientation="portrait">
         </activity>
         <!-- these are receivers and service used in gogole annalytics-->
         <receiver
