@@ -5,6 +5,7 @@ import android.app.Fragment;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +34,7 @@ public class Contest extends Fragment implements ContestResponse {
     private ContestResponse contestResponse;
     int score = 0;
     private int i = 0;
+    String selectedAnswer = null;
 
 
     @Nullable
@@ -51,6 +53,13 @@ public class Contest extends Fragment implements ContestResponse {
         btNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (radioGroup.getCheckedRadioButtonId() == -1){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle("Nothing Selected!");
+                    builder.setMessage("Must choose an answer..");
+                    builder.setPositiveButton("OK", null);
+                    builder.show();
+                }else {
                     int buttonId = radioGroup.getCheckedRadioButtonId();
                     RadioButton radioButton = (RadioButton) view.findViewById(buttonId);
                     String selectedAnswer = (String) radioButton.getText();
@@ -58,11 +67,12 @@ public class Contest extends Fragment implements ContestResponse {
                         //Toast.makeText(getActivity(), "right", Toast.LENGTH_LONG).show();
                         score++;
                     }
+
                     //Toast.makeText(getActivity(), "wrong", Toast.LENGTH_LONG).show();
 
                 setUpQuestion();
                 radioGroup.clearCheck();
-            }
+            }}
         });
         cont = getActivity();
         setUpQuestion();

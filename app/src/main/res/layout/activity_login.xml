@@ -21,13 +21,13 @@
 
     <EditText
         android:id="@+id/et_login_email"
-        android:inputType="textEmailAddress"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/iv_login_main"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:hint="Email ID" />
+        android:hint="Email ID"
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/et_login_password"
@@ -46,18 +46,20 @@
         android:layout_below="@+id/et_login_password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:textSize="19sp"
         android:background="@color/green"
         android:onClick="SignningIn"
         android:text="Sign In" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_width="130dp"
+        android:layout_height="45dp"
         android:layout_below="@+id/bt_login_signIn"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:background="@color/dark_green_transparent"
         android:onClick="registerClick"
+        android:textSize="18sp"
         android:text="Register"
         android:textAllCaps="false"
         android:textColor="@color/dark_grey_transparent" />
@@ -102,7 +104,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/bt_login_signIn"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="77dp"
         android:text="OR"
         android:textSize="17sp"
         android:textStyle="bold" />
@@ -114,16 +116,17 @@
         android:layout_below="@+id/tv_login_or"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"
-        android:layout_marginTop="10dp"
-        android:textSize="21sp" />
+        android:layout_marginTop="15dp"
+        android:textSize="23sp" />
 
     <com.google.android.gms.common.SignInButton
         android:id="@+id/sign_in_button"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/fb_login_button"
-        android:layout_centerHorizontal="true"
-        android:textSize="21sp"/>
+        android:textSize="22sp"
+        android:layout_marginTop="7dp"
+        android:background="#DD4B39"/>
 
 
 </RelativeLayout>
