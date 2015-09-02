@@ -46,23 +46,24 @@
         android:layout_below="@+id/et_login_password"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
-        android:textSize="19sp"
         android:background="@color/green"
         android:onClick="SignningIn"
-        android:text="Sign In" />
+        android:text="Sign In"
+        android:textSize="19sp" />
 
-    <Button
+    <TextView
         android:layout_width="130dp"
         android:layout_height="45dp"
         android:layout_below="@+id/bt_login_signIn"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
-        android:background="@color/dark_green_transparent"
+        android:background="@color/white"
+        android:gravity="center"
         android:onClick="registerClick"
-        android:textSize="18sp"
-        android:text="Register"
+        android:text="Not a member? Sign Up Now"
         android:textAllCaps="false"
-        android:textColor="@color/dark_grey_transparent" />
+        android:textColor="@color/green"
+        android:textSize="18sp" />
 
     <RelativeLayout
         android:layout_width="wrap_content"
@@ -124,9 +125,9 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/fb_login_button"
-        android:textSize="22sp"
         android:layout_marginTop="7dp"
-        android:background="#DD4B39"/>
+        android:background="#DD4B39"
+        android:textSize="22sp" />
 
 
 </RelativeLayout>
